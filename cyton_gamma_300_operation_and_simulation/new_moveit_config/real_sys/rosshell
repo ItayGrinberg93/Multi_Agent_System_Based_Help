@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+killall -9 gazebo & killall -9 gzserver & killall -9 gzclient
+killall -9 rviz
+kill $(pgrep bash)
+
+gnome-X-terminal-emulatur --title="hardware" -e "bash -c \"cd ~/cyton_ws ; source devel/setup.bash ; roslaunch cyton_gamma_300_controllers controller_manager.launch ; roslaunch cyton_gamma_300_controllers start_controller.launch ; $SHELL\""
+gnome-X-terminal-emulatur --title="hardware" -e "bash -c \"cd ~/cyton_ws ; source devel/setup.bash ; sleep 5 ; roslaunch cyton_gamma_300_controllers start_controller.launch ; sleep 5 ; rosrun cyton_gamma_300_controllers dynamixel_joint_state_publisher.py ; $SHELL\""
+gnome-X-terminal-emulatur --title="Rviz" -e "bash -c \"cd ~/catkin_ws ; source devel/setup.bash ; export TURTLEBOT3_MODEL=burger ; sleep 5 ; roslaunch new_moveit_config multi_update.launch ; $SHELL\""
+gnome-X-terminal-emulatur --title="Rviz" -e "bash -c \"cd ~/catkin_ws ; source devel/setup.bash ; export TURTLEBOT3_MODEL=burger ; sleep 5 ; roslaunch new_moveit_config bringup_real.launch ; $SHELL\""
+
+# gnome-terminal --title="Python dirty" -e "bash -c \"cd ~/catkin_ws ; source devel/setup.bash ; export TURTLEBOT3_MODEL=burger ; sleep 5 ; rosrun MRS_236609 dirt_publisher_ex3.py ; $SHELL\""
+# gnome-terminal --title="Python dummy agent" -e "bash -c \"cd ~/catkin_ws ; source devel/setup.bash ; export TURTLEBOT3_MODEL=burger ; sleep 5 ; rosrun MRS_236609 dummy_agent.py ; $SHELL\""

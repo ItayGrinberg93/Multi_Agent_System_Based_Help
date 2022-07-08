@@ -1,0 +1,80 @@
+# MoveIt-specific simulation settings
+moveit_sim_hw_interface:
+    joint_model_group: arm
+    joint_model_group_pose: straight
+# Settings for ros_control control loop
+generic_hw_control_loop:
+    loop_hz: 300
+    cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+hardware_interface:
+    joints:
+    - shoulder_roll_joint
+    - shoulder_pitch_joint
+    - elbow_roll_joint
+    - elbow_pitch_joint
+    - elbow_yaw_joint
+    - wrist_pitch_joint
+    - wrist_roll_joint
+    - gripper1_joint
+    - gripper2_joint
+    sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+arm_controller:
+    type: effort_controllers/JointTrajectoryController
+    joints:
+    - shoulder_roll_joint
+    - shoulder_pitch_joint
+    - elbow_roll_joint
+    - elbow_pitch_joint
+    - elbow_yaw_joint
+    - wrist_pitch_joint
+    - wrist_roll_joint
+    gains:
+        shoulder_roll_joint: { p: 12000, d: 50, i: 0.0, i_clamp: 10000 }
+        shoulder_pitch_joint: { p: 30000, d: 100, i: 0.02, i_clamp: 10000 }
+        elbow_roll_joint: { p: 18000, d: 50, i: 0.01, i_clamp: 1 }
+        elbow_pitch_joint: { p: 18000, d: 70, i: 0.01, i_clamp: 10000 }
+        elbow_yaw_joint: { p: 12000, d: 70, i: 0.01, i_clamp: 1 }
+        wrist_pitch_joint: { p: 7000, d: 50, i: 0.01, i_clamp: 1 }
+        wrist_roll_joint: { p: 2000, d: 20, i: 0.0, i_clamp: 1 }
+
+gripper_controller:
+    type: effort_controllers/JointTrajectoryController
+    joints:
+        - gripper1_joint
+        - gripper2_joint
+
+    gains:
+        gripper1_joint: { p: 2000, d: 3.0, i: 0, i_clamp: 1 }
+        gripper2_joint: { p: 2000, d: 3.0, i: 0, i_clamp: 1 }
+
+    
+
+
+controller_list:
+    - name: arm_controller
+      action_ns: follow_joint_trajectory
+      type: FollowJointTrajectory
+      default: true
+      joints:
+        - shoulder_roll_joint
+        - shoulder_pitch_joint
+        - elbow_roll_joint
+        - elbow_pitch_joint
+        - elbow_yaw_joint
+        - wrist_pitch_joint
+        - wrist_roll_joint
+    - name: gripper_controller
+      action_ns: follow_joint_trajectory
+      default: True
+      type: FollowJointTrajectory
+      joints:
+          - gripper1_joint
+          - gripper2_joint
+
+        

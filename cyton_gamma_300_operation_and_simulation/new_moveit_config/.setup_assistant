@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: cyton_gamma_300_description
+    relative_path: cyton_gamma_300.urdf
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/cyton_gamma_300.srdf
+  CONFIG:
+    author_name: itay grinberg
+    author_email: itaygrinberg@campus.technion.ac.il
+    generated_timestamp: 1648730050

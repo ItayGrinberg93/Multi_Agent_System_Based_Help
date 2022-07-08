@@ -1,0 +1,48 @@
+<launch>
+
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="map_file" default="$(find new_moveit_config)/maps/work_room.yaml"/>
+  <arg name="tb3_0"  default="tb3_0"/>
+  <arg name="cyton" default="cyton"/>
+<!--
+  By default, hide joint_state_publisher's GUI
+
+  MoveIt!'s "demo" mode replaces the real robot driver with the joint_state_publisher.
+  The latter one maintains and publishes the current joint configuration of the simulated robot.
+  It also provides a GUI to move the simulated robot around "manually".
+  This corresponds to moving around the real robot without the use of MoveIt.
+  -->
+  <arg name="use_gui" default="false" />
+
+ <!-- Gazebo specific options -->
+  <arg name="paused" default="false"/>
+  <!-- By default, use the urdf location provided from the package -->
+  <arg name="urdf_path" default="$(find cyton_gamma_300_description)/cyton_gamma_300.urdf"/>
+
+  <!-- launch the  robot -->
+  <include file="$(find new_moveit_config)/real_sys/real1.launch" >
+    <arg name="paused" value="$(arg paused)"/>
+  </include>
+
+  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+  <include file="$(find new_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="false"/>
+    <arg name="robot_description" value="$(arg urdf_path)"/>
+  </include>
+
+  <!-- If needed, broadcast static tf for robot root -->
+
+
+  <!-- We do not have a robot connected, so publish fake joint states -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="$(arg use_gui)"/>
+    <rosparam param="source_list">[/joint_states]</rosparam>
+  </node>
+
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node name="robot_state_publisher_cython" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+
+
+
+</launch>

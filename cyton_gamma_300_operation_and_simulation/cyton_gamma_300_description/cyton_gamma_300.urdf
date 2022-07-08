@@ -1,0 +1,580 @@
+<?xml version="1.0" ?>
+
+<robot name="cyton_gamma_300" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Initial footprint motor used here -->
+  <link name="base_footprint">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <gazebo reference="base_footprint">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+   </gazebo>
+
+ <link name="world"/>
+ 
+  <joint name="fixed_joint" type="fixed">
+           <parent link="world"/>
+           <child link="base_footprint"/>
+  </joint> 
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+  </joint>
+  <!-- Base of robot here -->
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/gamma_base.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/gamma_base.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+
+ <gazebo reference="base_link">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- First motor located here -->
+  <joint name="shoulder_roll_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="shoulder_roll"/>
+    <origin rpy="0 0 0" xyz="0 0 0.05315"/>
+    <limit effort="10000.0" lower="-2.618" upper="2.618" velocity="7.0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="shoulder_roll">
+    <visual>
+      <origin rpy="1.5708 0 3.14159" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Shoulder_Roll.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 3.14159" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Shoulder_Roll.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+  
+  <gazebo reference="sholder_roll">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_roll_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- Second motor located here -->
+  <joint name="shoulder_pitch_joint" type="revolute">
+    <parent link="shoulder_roll"/>
+    <child link="shoulder_pitch"/>
+    <origin rpy="0 0 0" xyz="0 0 0.063"/>
+    <limit effort="10000.0" lower="-1.8326" upper="1.8326" velocity="7.0"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+  <link name="shoulder_pitch">
+    <visual>
+      <origin rpy="0 1.5708 0" xyz="0.028 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Shoulder_Pitch.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5708 0" xyz="0.028 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Shoulder_Pitch.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+  
+ <gazebo reference="shoulder_pitch">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_pitch_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- Third motor located here -->
+  <joint name="elbow_roll_joint" type="revolute">
+    <parent link="shoulder_pitch"/>
+    <child link="elbow_roll"/>
+    <origin rpy="0 0 0" xyz="0 0 0.089"/>
+    <limit effort="10000.0" lower="-1.8326" upper="1.8326" velocity="7.0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="elbow_roll">
+    <visual>
+      <origin rpy="0 0 3.92699" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Elbow_Roll.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 3.92699" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Elbow_Roll.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+
+ <gazebo reference="elbow_roll">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbow_roll_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+
+  <!-- Fourth motor located here -->
+  <joint name="elbow_pitch_joint" type="revolute">
+    <parent link="elbow_roll"/>
+    <child link="elbow_pitch"/>
+    <origin rpy="0 0 0" xyz="0 0 0.052"/>
+    <limit effort="10000.0" lower="-1.8326" upper="1.8326" velocity="7.0"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+  <link name="elbow_pitch">
+    <visual>
+      <!-- Not sure if this is the correct orientation. -->
+      <origin rpy="1.5708 0 1.5708" xyz="0.027 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Elbow_Pitch.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0.027 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Elbow_Pitch.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+
+ <gazebo reference="elbow_pitch">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbow_pitch_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <!-- Fifth motor located here -->
+  <joint name="elbow_yaw_joint" type="revolute">
+    <parent link="elbow_pitch"/>
+    <child link="elbow_yaw"/>
+    <origin rpy="0 0 0" xyz="0 0 0.072"/>
+    <limit effort="10000.0" lower="-1.8326" upper="1.8326" velocity="7.0"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+  <link name="elbow_yaw">
+    <visual>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Elbow_Yaw.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Elbow_Yaw.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+
+ <gazebo reference="elbow_yaw">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbow_yaw_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <!-- Sixth motor located here -->
+  <joint name="wrist_pitch_joint" type="revolute">
+    <parent link="elbow_yaw"/>
+    <child link="wrist_pitch"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0718"/>
+    <limit effort="10000.0" lower="-1.7" upper="1.7" velocity="7.0"/>  <!-- changed limits -->
+    <axis xyz="1 0 0"/>
+  </joint>
+  <link name="wrist_pitch">
+    <visual>
+      <origin rpy="1.5708 0 1.5708" xyz="0.027 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Wrist_Pitch.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0.027 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Wrist_Pitch.dae"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+
+
+ <gazebo reference="wrist_pitch">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wrist_pitch_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+
+  <!-- Seventh motor located here -->
+  <joint name="wrist_roll_joint" type="revolute">
+    <parent link="wrist_pitch"/>
+    <child link="wrist_roll"/>
+    <origin rpy="0 0 0" xyz="0 0 0.051425"/>
+    <limit effort="10000.0" lower="-2.61799" upper="2.61799" velocity="7.0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="wrist_roll">
+    <visual>
+      <origin rpy="0 3.14159 1.5708" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Wrist_Roll.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 3.14159 1.5708" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cyton_gamma_300_description/meshes/Wrist_Roll.dae"/>
+      </geometry>
+    </collision>
+
+ 
+
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+                ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+
+  </link>
+
+ <gazebo reference="wrist_roll">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wrist_roll_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        <legacyModeNS>true</legacyModeNS>
+      </plugin>
+  </gazebo>
+  
+
+  <link name="plate_link">
+           <inertial>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+               <mass value="0.01" />
+               <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1"/>
+           </inertial>
+           <visual>
+               <origin rpy="0 0 0" xyz="0 0 0"/>
+               <geometry>
+                   <box size="0.06 0.1 0.02"/> x-length,y-legth and z-length
+               </geometry>
+               <material name="blue"/>
+           </visual>
+           <collision>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+               <geometry>
+                   <box size="0.06 0.1 0.027"/> x-length,y-legth and z-length
+               </geometry>
+           </collision>
+       </link>
+
+       <gazebo reference="plate_link">
+         <mu1>0.2</mu1>
+         <mu2>0.2</mu2>
+           <material>Gazebo/Blue</material>
+       </gazebo>
+
+       <joint name="flexible4_joint" type="fixed">
+       	<parent link="wrist_roll"/>
+       	<child link="plate_link"/>
+           <origin xyz="0 0 0.04" rpy="0 0 0"/>
+           <limit lower="-3.14" upper="3.14" effort="1000" velocity="7"/>
+           <axis xyz="0 0 1"/>
+   	</joint>
+
+       <!--transmission name="tran4">
+           <type>transmission_interface/SimpleTransmission</type>
+           <joint name="flexible4_joint">
+               <hardwareInterface>EffortJointInterface</hardwareInterface>
+           </joint>
+           <actuator name="motor8">
+               <hardwareInterface>EffortJointInterface</hardwareInterface>
+               <mechanicalReduction>1</mechanicalReduction>
+           </actuator>
+       </transmission> -->
+
+       <link name="gripper1_link">
+           <inertial>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+               <mass value="0.009" />
+               <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1"/>
+           </inertial>
+           <visual>
+               <origin rpy="0 0 0" xyz="0 0 0"/>
+               <geometry>
+                   <!--mesh filename="package://manipulator_h_description/meshes_gripper/link1_prt.stl" scale="0.001 0.001 0.001"/>-->
+                   <box size="0.06 0.005 0.05"/> 
+               </geometry>
+               <material name="grey"/>
+           </visual>
+           <collision>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+               <geometry>
+                   <!--<box size="0.06 0.25 0.255"/> x-length,y-legth and z-length-->
+                   <!-- mesh filename="package://manipulator_h_description/meshes_gripper/link1_prt.stl" scale="0.001 0.001 0.001"/>-->
+                   <box size="0.06 0.005 0.05"/> 
+               </geometry>
+           </collision>
+       </link>
+
+       <gazebo reference="gripper1_link">
+         <mu1>0.2</mu1>
+         <mu2>0.2</mu2>
+           <material>Gazebo/Grey</material>
+       </gazebo>
+
+       
+    <joint name="gripper1_joint" type="prismatic">
+    	<parent link="plate_link"/>
+    	<child link="gripper1_link"/>
+        <origin xyz="0 -0.05 0.037" rpy="0 0 0"/>
+        <limit lower="0" upper="0.05" effort="10" velocity="0.05"/>
+        <axis xyz="0 1 0"/>
+	</joint>
+
+       <transmission name="tran8">
+           <type>transmission_interface/SimpleTransmission</type>
+           <joint name="gripper1_joint">
+               <hardwareInterface>EffortJointInterface</hardwareInterface>
+           </joint>
+           <actuator name="motor8">
+               <hardwareInterface>EffortJointInterface</hardwareInterface>
+               <mechanicalReduction>1</mechanicalReduction>
+           </actuator>
+       </transmission> 
+
+
+       <link name="gripper2_link">
+           <inertial>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+               <mass value="0.009" />
+               <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1"/>
+           </inertial>
+           <visual>
+               <origin rpy="0 0 0" xyz="0 0 0"/>
+               <geometry>
+                   <!--mesh filename="package://manipulator_h_description/meshes_gripper/link1_prt.stl" scale="0.001 0.001 0.001"/>-->
+                   <box size="0.06 0.005 0.05"/> 
+               </geometry>
+               <material name="grey"/>
+           </visual>
+           <collision>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+               <geometry>
+                   <!--<box size="0.06 0.25 0.255"/> x-length,y-legth and z-length-->
+                   <!-- mesh filename="package://manipulator_h_description/meshes_gripper/link1_prt.stl" scale="0.001 0.001 0.001"/>-->
+                   <box size="0.06 0.005 0.05"/> 
+               </geometry>
+           </collision>
+       </link>
+
+       <joint name="gripper2_joint" type="prismatic">
+    	  <parent link="plate_link"/>
+    	  <child link="gripper2_link"/>
+        <origin xyz="0 0.05 0.037" rpy="0 0 0"/>
+        <limit lower="-0.05" upper="0" effort="10" velocity="0.05"/>
+        <axis xyz="0 1 0"/>
+	     </joint>
+
+       <transmission name="tran9">
+           <type>transmission_interface/SimpleTransmission</type>
+           <joint name="gripper2_joint">
+               <hardwareInterface>EffortJointInterface</hardwareInterface>
+           </joint>
+           <actuator name="motor9">
+               <hardwareInterface>EffortJointInterface</hardwareInterface>
+               <mechanicalReduction>1</mechanicalReduction>
+           </actuator>
+       </transmission> 
+
+  <gazebo>
+   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+        <arm>
+           <arm_name>cyton_gamma_300</arm_name>
+           <palm_link> wrist_roll </palm_link>
+           <gripper_link> gripper1_link </gripper_link>
+           <gripper_link> gripper2_link </gripper_link>
+        </arm>
+       <forces_angle_tolerance>120</forces_angle_tolerance>
+       <update_rate>4</update_rate>
+       <grip_count_threshold>2</grip_count_threshold>
+       <max_grip_count>8</max_grip_count>
+       <release_tolerance>0.005</release_tolerance>
+       <disable_collisions_on_attach>false</disable_collisions_on_attach>
+       <contact_topic>__default_topic__</contact_topic>
+    </plugin>
+</gazebo>
+
+
+  
+</robot>

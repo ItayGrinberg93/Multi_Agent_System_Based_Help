@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: cyton_gamma_300_description
+    relative_path: cyton_gamma_300_git.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/cyton_gamma_300.srdf
+  CONFIG:
+    author_name: benji
+    author_email: benji@csc.com
+    generated_timestamp: 1650453045

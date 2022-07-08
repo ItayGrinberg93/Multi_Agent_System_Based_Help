@@ -1,0 +1,22 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="model" default="burger"/>
+  <arg name="map_file" default="$(find new_moveit_config)/maps/work_room.yaml"/>
+  <arg name="use_gui" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="open_rviz" default="true"/>
+
+  <include file="$(find new_moveit_config)/real_sys/demo.launch">
+  </include>
+
+  <include file="$(find new_moveit_config)/my_turtlebot3/turtlebot3_real_navigation.launch">
+    <arg name="model" value="$(arg model)" />
+    <arg name="map_file" default="$(arg map_file)" />
+  </include>
+  <!-- rviz -->
+   <group if="$(arg open_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find new_moveit_config)/my_turtlebot3/bringup_multi1.rviz"/>
+   </group>
+
+</launch>

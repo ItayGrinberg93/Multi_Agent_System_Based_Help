@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="tb3_0"  default="tb3_0"/>
+
+
+  <arg name="paused" default="false"/>
+
+  <!-- Turtlebot3 -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <arg name="tb3_x_pos" default=" 3.0"/>
+  <arg name="tb3_y_pos" default=" 0.0"/>
+  <arg name="tb3_z_pos" default=" 0.0"/>
+  <arg name="tb3_yaw"   default=" 0.0"/>
+
+  <!-- turtlebot3_ -->
+
+  <group ns = "$(arg tb3_0)">
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+      <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_tb3" output="screen">
+        <param name="publish_frequency" type="double" value="50.0" />
+        <param name="tf_prefix" value="$(arg tb3_0)" />
+      </node>
+
+  </group>
+
+</launch>
