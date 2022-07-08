@@ -17,7 +17,7 @@ two robots, cyton_300_gamma and turtlebot3, achive a common goal
 <a href="mailto:itaygrinberg@campus.technion.ac.il" target="_top">itaygrinberg@campus.technion.ac.il</a>
 </p>
 <p align="center">
-<a href="mailto:benjib@campus.technion.ac.il" target="_top">benjib@campus.technion.ac.il</a>
+<a href="mailto:barnes@campus.technion.ac.il" target="_top">benjib@campus.technion.ac.il</a>
 </p>
 
 ------------
