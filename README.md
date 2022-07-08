@@ -18,7 +18,9 @@ two robots, cyton_300_gamma and turtlebot3, achive a common goal
 <p align="center">
 <a href="mailto:benjib@campus.technion.ac.il" target="_top">benjib@campus.technion.ac.il</a>
 </p>
+
 ------------
+
 <a id="top"></a>
 ### Contents
 1. [Introduction](#1.0)
@@ -43,7 +45,9 @@ two robots, cyton_300_gamma and turtlebot3, achive a common goal
 * **RRR** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Revolute Revolute Revolute](http://www.roboticsbible.com/robot-links-and-joints.html)
 * **URDF** &nbsp;&nbsp;&nbsp; [Unified Robot Description Format](http://wiki.ros.org/urdf)
 * **TB3** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Turtlebot3](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
+
 ------------
+
 <a name="1.0"></a>
 ### 1. Introduction
 The proposed project focuses on heterogeneous teams of autonomous robots.This project originated from Cyton 300 gamma [Robotic arm - Pick & Place project](http://new.robai.com/assets/Cyton-Gamma-300-Arm-Specifications_2014.pdf)
