@@ -170,7 +170,7 @@ $ git clone https://github.com/andreasBihlmaier/pysdf.git
 $ git clone https://github.com/JenniferBuehler/general-message-pkgs.git
 $ git clone https://github.com/JenniferBuehler/gazebo-pkgs.git
 $ git clone https://github.com/pal-robotics/gazebo_ros_link_attacher.git
-$ git clone https://github.com/ItayGrinberg93/multi_agent_based_help.git
+$ git clone https://github.com/ItayGrinberg93/multi_agent.git
 ```
 4\. Build the project
 ```sh
