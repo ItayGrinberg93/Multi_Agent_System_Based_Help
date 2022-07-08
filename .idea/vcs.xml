@@ -4,5 +4,12 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cyton_gamma_300-1500_operation_and_simulation" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cyton_gamma_300_operation_and_simulation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gazebo-pkgs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gazebo2rviz" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gazebo_ros_link_attacher" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/general-message-pkgs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pysdf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/turtlebot3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/turtlebot3_msgs" vcs="Git" />
   </component>
 </project>
