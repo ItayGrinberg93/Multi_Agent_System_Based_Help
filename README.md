@@ -54,16 +54,16 @@ two robots, cyton_300_gamma and turtlebot3, achive a common goal
 The proposed project focuses on heterogeneous teams of autonomous robots.This project originated from Cyton 300 gamma [Robotic arm - Pick & Place project](http://new.robai.com/assets/Cyton-Gamma-300-Arm-Specifications_2014.pdf)
 
 <p align="center">
-<img src="figures/1-intro/cyton)" alt="" width="53%">
+<img src="figure/intro-1/cyton_300.png" alt="" width="53%">
 <br>
 <sup><b>Fig. 1.1&nbsp;&nbsp;A robotic arm </b></sup>
 </p>
 
-which, in turn is based on the [Turtlebot3 - Burger](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)  .
+which get assistnce from [Turtlebot3 - Burger](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)  .
 <p align="center">
-<img src="figures/1-intro/tb3)" alt="" width="53%">
+<img src="figure/intro-1/turtlebot-3.png" alt="" width="53%">
 <br>
-<sup><b>Fig. 1.2&nbsp;&nbsp;A robotic arm </b></sup>
+<sup><b>Fig. 1.2&nbsp;&nbsp;A Turtlebot3 - Burger </b></sup>
 </p>
 
 
@@ -109,6 +109,90 @@ Robotic manipulators and Differential Drive Robot like Tb3 have become ubiquitou
 These jobs all require the same set of core capabilities, namely, the robotic arm's end-effector being able to reach specific coordinates within its workspace, and the TB3 can navigate to a point in the environment at the location. 
 
 ------------
+<a name="2.0"></a>
+<!--<div style="text-align:left;">
+  <span style="font-size: 1.4em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;"> 2. Environment Setup</span><span style="float:right;"><a href="#top">Back to Top</a></span>
+</div>-->
+### 2. Environment Setup
+The project uses [ROS Melodic Morenia](http://wiki.ros.org/melodic) running on [Ubuntu 18.04 LTS ( bionic beaver)](https://releases.ubuntu.com/18.04/).
+
+The following tools are used for simulation and motion planning:
+* [Gazebo](http://gazebosim.org/): a physics based 3D simulator extensively used in the robotics world
+* [RViz](http://wiki.ros.org/rviz): a 3D visualizer for sensor data analysis, and robot state visualization
+* [MoveIt!](http://moveit.ros.org/): a ROS based software framework for motion planning, kinematics and robot control
+
+Once ROS is installed, we can proceed with the environment setup for the project:
+
+##### Verify Project Tools
+
+1\. Chack that you have tje following dependencies and if not run the following commands:
+```sh
+$ sudo apt-get install ros-melodic-ros-controllers
+```
+```sh
+$ sudo apt-get install ros-melodic-gazebo*
+```
+```sh
+$ sudo apt-get install ros-melodic-moveit*
+```
+```sh
+$ sudo apt-get install ros-melodic-industrial-core
+```
+```sh
+$ sudo apt-get install ros-melodic-trac-ik-kinematics-plugin
+```
+```sh
+$ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \
+  ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc \
+  ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan \
+  ros-melodic-rosserial-arduino ros-melodic-rosserial-python \
+  ros-melodic-rosserial-server ros-melodic-rosserial-client \
+  ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server \
+  ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro \
+  ros-melodic-compressed-image-transport ros-melodic-rqt* \
+  ros-melodic-gmapping ros-melodic-navigation ros-melodic-interactive-markers
+
+```
+##### Create ROS Workspace
+2\. Create a [catkin](http://wiki.ros.org/catkin/conceptual_overview) workspace if haven't already
+```sh
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws/
+$ catkin_init_workspace
+$ ls -l
+```
+
+3\. Clone or download project repository into the *src* directory of the catkin workspace
+```sh
+cd ~/catkin_ws/src
+$ git clone https://github.com/andreasBihlmaier/gazebo2rviz.git
+$ git clone https://github.com/andreasBihlmaier/pysdf.git
+$ git clone https://github.com/JenniferBuehler/general-message-pkgs.git
+$ git clone https://github.com/JenniferBuehler/gazebo-pkgs.git
+$ git clone https://github.com/pal-robotics/gazebo_ros_link_attacher.git
+$ git clone https://github.com/ItayGrinberg93/multi_agent_based_help.git
+```
+4\. Build the project
+```sh
+$ cd ~/catkin_ws
+$ catkin_make
+```
+#### Run the simulation
+5\. To use TB3 add to bash.rc or open two terminals and run in each: 
+```sh
+$ source devel/setup.bash
+$ export TURTLEBOT3_MODEL=burger 
+```
+6\. At the first terminal run:
+```sh
+$ roslaunch new_moveit_config multi_gazebo_update.launch 
+```
+7\. At the secound terminal run:
+```sh
+$ roslaunch new_moveit_config bringup_update.launch
+ 
+```
+
 
 
 
