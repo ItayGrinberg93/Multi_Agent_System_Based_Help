@@ -3,12 +3,13 @@ two robots, cyton_300_gamma and turtlebot3, achive a common goal
 <!--pic of simulation-->
 
 <p align="center">
-<b><i>dicription of simulation</i></b>
+<b><i>Cyton_300_gamma and Turtlebot3,need to Build pile of cudes</i></b>
 </p>
 
 <p align="center">
-<img src="pic" alt="" width="51%"><img src="figures/1-intro/moveit_intro_v3.png" alt="" width="47.1%">
+<img src="figure/intro-1/gzebo_intro.png" alt="" width="51%">
 </p>
+
 
 <p align="center">
 <b>Itay Grinberg & Benjamin Barns</b>
