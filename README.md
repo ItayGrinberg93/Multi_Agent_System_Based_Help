@@ -267,7 +267,7 @@ Therefore, the total number of DOF for any serial manipulator with *three* 1-DOF
 The *workspace* of a robotic manipulator is defined as the set of points that can be reached by its [end-effector](https://en.wikipedia.org/wiki/Robot_end_effector) <sup>[2]</sup>. In other words, it is simply the 3D space in which the robot mechanism works.
 
 <p align="center">
-<img src="figures/3-theory/scara_anthro_wksp.png" alt="" width="65%">
+<img src="figure/3-theory/scara_anthro_wksp.png" alt="" width="65%">
 <br>
 <sup><b>Fig. 3.2&nbsp;&nbsp;&nbsp;Robot Reach “Bubble”</b></sup>
 <br>
@@ -282,28 +282,28 @@ It is important to note that no kinematic solution exists for the manipulator's 
 Rotation matrices are a means of *expressing* a vector in one coordinate frame in terms of some other coordinate frame.
 
 <p align="center">
-<img src="figures/3-theory/rot_derivation_ab_3.png" alt="" width="68%">
+<img src="figure/3-theory/rot_derivation_ab_3.png" alt="" width="68%">
 <br>
 <sup><b>Fig. 3.3&nbsp;&nbsp;A 2D geometric rotation between coordinate frames A and B</b></sup>
 <br>
 </p>
 
-In figure 3.2, Point **P** is expressed with vector **u** relative to coordinate *frame B*. The objective is to express point **P** with vector **v** relative to coordinate *frame A*. The basis vectors of **v**, **v<sub>x</sub>** and **v<sub>y</sub>** can be expressed in terms of the basis vectors of **u**, **u<sub>x</sub>** and **u<sub>y</sub>**  as follows:
+In figure 3.3, Point **P** is expressed with vector **u** relative to coordinate *frame B*. The objective is to express point **P** with vector **v** relative to coordinate *frame A*. The basis vectors of **v**, **v<sub>x</sub>** and **v<sub>y</sub>** can be expressed in terms of the basis vectors of **u**, **u<sub>x</sub>** and **u<sub>y</sub>**  as follows:
 
 <p align="center">
-<img src="figures/3-theory/rot_deriv_1.png" alt="" width="32%">
+<img src="figure/3-theory/rot_deriv_1.png" alt="" width="32%">
 </p>
 
 where unit vectors of *frame A*, **a<sub>x</sub>** and **a<sub>y</sub>** are expressed in terms of unit vectors of *frame B*, **b<sub>x</sub>** and **b<sub>y</sub>** as follows:
 
 <p align="center">
-<img src="figures/3-theory/rot_deriv_2.png" alt="" width="32%">
+<img src="figure/3-theory/rot_deriv_2.png" alt="" width="32%">
 </p>
 
 Substituting (2) in (1) and solving for the dot products yields the following equation:
 
 <p align="center">
-<img src="figures/3-theory/rot_deriv_3.png" alt="" width="32%">
+<img src="figure/3-theory/rot_deriv_3.png" alt="" width="32%">
 </p>
 
 where the first term on the right-hand side is the **2D Rotation Matrix**, denoted in this case as **<i><sup>a</sup><sub>b</sub>R</i>**. Any point on coordinate *frame B* multiplied by <i><sup>a</sup><sub>b</sub>R</i> will project it onto *frame A*. In other words, to express a vector **u** on some *frame B* as a vector **v** on a different *frame A*, **u** is multiplied by the rotation matrix with angle theta by which *frame A* is rotated from *fram B*. Also worth noting is that the rotation from A to B is equal to the *transpose* of the rotation of B to A.
@@ -313,7 +313,7 @@ where the first term on the right-hand side is the **2D Rotation Matrix**, denot
 Euler angles are a system to describe a sequence or a composition of rotations. According to [Euler's Rotation Theorem](https://en.wikipedia.org/wiki/Euler%27s_rotation_theorem), the orientation of any [rigid body](https://en.wikipedia.org/wiki/Rigid_body) w.r.t. some fixed reference frame can always be described by **three** elementary rotations in a given **sequence** as shown in figure 3.3.
 
 <p align="center">
-<img src="figures/3-theory/Inertial-Frame.png" alt="" width="52%">
+<img src="figure/3-theory/Inertial-Frame.png" alt="" width="52%">
 <br>
 <sup><b>Fig. 3.4&nbsp;&nbsp;Defining Euler angles from a sequence of rotations</b></sup>
 <br>
@@ -323,7 +323,7 @@ Euler angles are a system to describe a sequence or a composition of rotations. 
 Conventionally, the movements about the three axes of rotations and their associated angles are described by the 3D rotation matrices in figure 3.3.
 
 <p align="center">
-<img src="figures/3-theory/euler_rotation_matrices_c.png" alt="" width="85%">
+<img src="figure/3-theory/euler_rotation_matrices_c.png" alt="" width="85%">
 <br>
 <sup><b>Fig. 3.5&nbsp;&nbsp;3D counter-clockwise rotation matrices describing yaw, pitch and roll</b></sup>
 </p>
@@ -357,7 +357,7 @@ Euler angles, normally in the [Tait–Bryan](https://commons.wikimedia.org/wiki/
 Of particular importance is a phenomenon associated with Euler angles known as a [Gimbal Lock](https://en.wikipedia.org/wiki/Gimbal_lock) which occurs when there is a loss of one degree of freedom as a result of the axes of two of the three [gimbals](https://en.wikipedia.org/wiki/Gimbal) driven into a parrallel configuration.
 
 #### 3.4 Quaternions 
-Quaternions are an algebraic structure that extends the familiar concept of complex numbers.A quaternion is a 4-tuple written formally as q0 + q1*i + q2*j + q3*k, where qi are real numbers and the symbols i, j, k sustain an orthogonal system. While quaternions are much less intuitive than angles, rotations defined by quaternions can be computed more efficiently
+Quaternions are an algebraic structure that extends the familiar concept of complex numbers.A quaternion is a 4-tuple written formally as q0 + q1*i + q2*j + q3*k , where qi are real numbers and the symbols i, j, k sustain an orthogonal system. While quaternions are much less intuitive than angles, rotations defined by quaternions can be computed more efficiently
 and with more stability, and therefore are widely used.
 
 **From Euler angles to a quaternion** The formula seems to have been derived this way:
@@ -373,13 +373,21 @@ axis. The quaternion is  qz,γ=cosγ/2+(sinγ/2)k..
 
 A rotation that is done in steps like this is modeled by multiplying the quaternions.
 
+<p align="center">
+<img src="figure/3-theory/Quaternions-zyx.svg.png" alt="" width="44%">
+<br>
+<sup><b>Fig. 3.6&nbsp;&nbsp;Euler angles for Body 3-1-3 Sequence – The xyz (original fixed Lab) system is shown in blue, the XYZ (rotated final Body) system is shown in red. The line of nodes, labelled N and shown in green, is the intermediate Body X-axis around which the second rotation occurs. A</b></sup>
+<br>
+<sup>[Source: Wikipedia]</sup>
+</p>
+
 #### 3.5 Homogeneous Transforms
 In the case where a reference frame is both simultaneously rotated *and* translated (transformed) with respect to some other reference frame, a *homogeneous transform matrix* describes the transformation.
 
 <p align="center">
 <img src="figure/3-theory/homo_tf_2.png" alt="" width="44%">
 <br>
-<sup><b>Fig. 3.6&nbsp;&nbsp;Rotation and Translation of frame B relative to frame A</b></sup>
+<sup><b>Fig. 3.7&nbsp;&nbsp;Rotation and Translation of frame B relative to frame A</b></sup>
 <br>
 <sup>[Source: Salman Hashmi. BSD License]</sup>
 </p>
@@ -395,7 +403,7 @@ The relationship between the three vectors in figure 3.7 is shown in equation (1
 <p align="center">
 <img src="figure/3-theory/homog_tf_2_exp.png" alt="" width="55%">
 <br>
-<sup><b>Fig. 3.7&nbsp;&nbsp;Anatomy of the homogeneous transform relationship</b></sup>
+<sup><b>Fig. 3.8&nbsp;&nbsp;Anatomy of the homogeneous transform relationship</b></sup>
 </p>
 
 Figure 3.8 describes the components of equation (2). The desired vector to point P (w.r.t. to A<sub>0</sub>) is obtained by multiplying the given vector to point P (w.r.t. B<sub>0</sub>) by the *homogeneous transform* matrix, composed of the block Rotation matrix projecting B onto A and the block translation vector to B w.r.t A<sub>0</sub>.
@@ -403,10 +411,10 @@ Figure 3.8 describes the components of equation (2). The desired vector to point
 <p align="center">
 <img src="figure/3-theory/robo_arm_w.png" alt="" width="43%">
 <br>
-<sup><b>Fig. 3.8&nbsp;&nbsp;Transformation between adjacent revolute joint frames</b></sup>
+<sup><b>Fig. 3.9&nbsp;&nbsp;Transformation between adjacent revolute joint frames</b></sup>
 </p>
 
-As shown in figure 3.8, the position of the end-effector is known w.r.t. *its* coordinate reference frame *C*. The objective is to express it w.r.t. the *fixed* world coordinate reference frame *W*. This is because the positions of all objects of interest in the manipulator's environment are expressed w.r.t. the world reference frame. In other worlds, both, the end-effector, *and* the objects it interacts with need to be defined on the *same* coordinate reference frame. 
+As shown in figure 3.9, the position of the end-effector is known w.r.t. *its* coordinate reference frame *C*. The objective is to express it w.r.t. the *fixed* world coordinate reference frame *W*. This is because the positions of all objects of interest in the manipulator's environment are expressed w.r.t. the world reference frame. In other worlds, both, the end-effector, *and* the objects it interacts with need to be defined on the *same* coordinate reference frame. 
 
 Point P relative to frame *W* can be found by successively applying equation (4) between adjacent joints:
 
