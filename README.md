@@ -1,4 +1,4 @@
-# multi_agent_system_based_help
+# Multi Agent System Based Help
 two robots, cyton_300_gamma and turtlebot3, achive a common goal 
 <!--pic of simulation-->
 
@@ -248,7 +248,7 @@ Common DOFs:
 * *7*: coordinates required to fully describe the configuration of two rigid bodies in 3D free space connected by a joint
 
 <p align="center">
-<img src="figures/3-theory/workspace_RRR.jpg" alt="" width="73%">
+<img src="figure/3-theory/workspace_RRR.jpg" alt="" width="73%">
 <br>
 <sup><b>Fig. 3.1&nbsp;&nbsp;Geometry of a 3-DOF anthropomorphic robot</b></sup>
 <br>
@@ -269,7 +269,7 @@ The *workspace* of a robotic manipulator is defined as the set of points that ca
 <p align="center">
 <img src="figures/3-theory/scara_anthro_wksp.png" alt="" width="65%">
 <br>
-<sup><b>Fig. 3.2&nbsp;&nbsp;&nbsp;Workspaces of 3-DOF SCARA and anthropomorphic manipulators</b></sup>
+<sup><b>Fig. 3.2&nbsp;&nbsp;&nbsp;Robot Reach “Bubble”</b></sup>
 <br>
 <sup>[Source: Federica.EU]</sup>
 </p>
@@ -278,28 +278,13 @@ Figure 3.2 shows two types of serial manipulators, [SCARA](https://en.wikipedia.
 
 It is important to note that no kinematic solution exists for the manipulator's configuration or joint space for any desired end-effector position outside of the workspace.
 
-##### Spherical Wrist
-A *spherical wrist* of a robotic manipulator is designed by arranging its last three revolute joints such that their axes of rotations intersect at a common point, referred to as the *wrist center*.
-
-<p align="center">
-<img src="figures/3-theory/spherical_wrist_def_2.png" alt="" width="67%">
-<br>
-<sup><b>Fig. 3.3&nbsp;&nbsp;Difference between a spherical and non-spherical wrist</b></sup>
-<br>
-<sup>[Source: Khaled Elashry, ResearchGate]</sup>
-</p>
-
-Figure 3.3 shows the difference between a spherical and non-spherical wrist. In 3.3 (a), joint axes of rotations A, B, C all intersect at the wrist center, whereas, in 3.3(b), the wrist center is non-existent. Physically speaking, a six DOF serial manipulator like the one in figure 3.3 would use the first three joints to control the position of the wrist center while the last three joints (spherical wrist) would orient the end effector as needed, as in a human arm.
-
-The spherical wrist is an important design characteristic in anthropomorphic manipulators which simplifies their kinematic analysis, as demonstrated in section 5. 
-
 #### 3.2 Rotation of Coordinate Frames
 Rotation matrices are a means of *expressing* a vector in one coordinate frame in terms of some other coordinate frame.
 
 <p align="center">
 <img src="figures/3-theory/rot_derivation_ab_3.png" alt="" width="68%">
 <br>
-<sup><b>Fig. 3.4&nbsp;&nbsp;A 2D geometric rotation between coordinate frames A and B</b></sup>
+<sup><b>Fig. 3.3&nbsp;&nbsp;A 2D geometric rotation between coordinate frames A and B</b></sup>
 <br>
 </p>
 
@@ -330,17 +315,17 @@ Euler angles are a system to describe a sequence or a composition of rotations. 
 <p align="center">
 <img src="figures/3-theory/Inertial-Frame.png" alt="" width="52%">
 <br>
-<sup><b>Fig. 3.5&nbsp;&nbsp;Defining Euler angles from a sequence of rotations</b></sup>
+<sup><b>Fig. 3.4&nbsp;&nbsp;Defining Euler angles from a sequence of rotations</b></sup>
 <br>
 <sup>[Source: CHRobotics]</sup>
 </p>
 
-Conventionally, the movements about the three axes of rotations and their associated angles are described by the 3D rotation matrices in figure 3.4.
+Conventionally, the movements about the three axes of rotations and their associated angles are described by the 3D rotation matrices in figure 3.3.
 
 <p align="center">
 <img src="figures/3-theory/euler_rotation_matrices_c.png" alt="" width="85%">
 <br>
-<sup><b>Fig. 3.6&nbsp;&nbsp;3D counter-clockwise rotation matrices describing yaw, pitch and roll</b></sup>
+<sup><b>Fig. 3.5&nbsp;&nbsp;3D counter-clockwise rotation matrices describing yaw, pitch and roll</b></sup>
 </p>
 
 Euler angles are characterized by the following properties:
@@ -352,7 +337,7 @@ Euler angles are characterized by the following properties:
 **Intrinsic** or body-fixed rotations are performed about the coordinate system *as* rotated by the previous rotation. The rotation sequence changes the axis orientation after each elemental rotation while the body remains fixed.
 
 <p align="center">
-<img src="figures/3-theory/in_rot_matrices.png" alt="" width="62%">
+<img src="figure/3-theory/in_rot_matrices.png" alt="" width="62%">
 </p>
 
 In an intrinsic sequence of rotations, such as, a Z-Y-X convention of a yaw, followed by a pitch, followed by a roll, subsequent elemental rotations are *post-multiplied*.
@@ -360,7 +345,7 @@ In an intrinsic sequence of rotations, such as, a Z-Y-X convention of a yaw, fol
 **Extrinsic** or fixed-axis rotations are performed about the *fixed* world reference frame. The original coordinate frame remains motionless while the body changes orientation.
 
 <p align="center">
-<img src="figures/3-theory/ex_rot_matrices.png" alt="" width="62%">
+<img src="figure/3-theory/ex_rot_matrices.png" alt="" width="62%">
 </p>
 
 In an extrinsic sequence of rotations, such as, a Z-Y-X convention of a yaw, followed by a pitch, followed by a roll, subsequent elemental rotations are *pre-multiplied*.
@@ -388,15 +373,13 @@ axis. The quaternion is  qz,γ=cosγ/2+(sinγ/2)k..
 
 A rotation that is done in steps like this is modeled by multiplying the quaternions.
 
-
-
 #### 3.5 Homogeneous Transforms
 In the case where a reference frame is both simultaneously rotated *and* translated (transformed) with respect to some other reference frame, a *homogeneous transform matrix* describes the transformation.
 
 <p align="center">
-<img src="figures/3-theory/homo_tf_2.png" alt="" width="44%">
+<img src="figure/3-theory/homo_tf_2.png" alt="" width="44%">
 <br>
-<sup><b>Fig. 3.7&nbsp;&nbsp;Rotation and Translation of frame B relative to frame A</b></sup>
+<sup><b>Fig. 3.6&nbsp;&nbsp;Rotation and Translation of frame B relative to frame A</b></sup>
 <br>
 <sup>[Source: Salman Hashmi. BSD License]</sup>
 </p>
@@ -404,46 +387,46 @@ In the case where a reference frame is both simultaneously rotated *and* transla
 In figure 3.7, point P is expressed w.r.t. frame B and the objective is to express it w.r.t. frame A. To do so would require projecting or superimposing frame B onto frame A i.e. first rotating frame B to orient it with frame A and then translating it such that the centers B<sub>0</sub> and A<sub>0</sub> of both frames are aligned.
 
 <p align="center">
-<img src="figures/3-theory/homog_transform_eqns.png" alt="" width="52%">
+<img src="figure/3-theory/homog_transform_eqns.png" alt="" width="52%">
 </p>
 
 The relationship between the three vectors in figure 3.7 is shown in equation (1). The desired vector to point P from A<sub>0</sub> is the sum of the vector to point P from B<sub>0</sub>, rotated to frame A, and the translation vector to B<sub>0</sub> w.r.t A<sub>0</sub>. Equations (2) and (3) are the matrix-forms of equation (1) so that it can be rendered in software with linear algebra libraries.
 
 <p align="center">
-<img src="figures/3-theory/homog_tf_2_exp.png" alt="" width="55%">
+<img src="figure/3-theory/homog_tf_2_exp.png" alt="" width="55%">
 <br>
-<sup><b>Fig. 3.8&nbsp;&nbsp;Anatomy of the homogeneous transform relationship</b></sup>
+<sup><b>Fig. 3.7&nbsp;&nbsp;Anatomy of the homogeneous transform relationship</b></sup>
 </p>
 
 Figure 3.8 describes the components of equation (2). The desired vector to point P (w.r.t. to A<sub>0</sub>) is obtained by multiplying the given vector to point P (w.r.t. B<sub>0</sub>) by the *homogeneous transform* matrix, composed of the block Rotation matrix projecting B onto A and the block translation vector to B w.r.t A<sub>0</sub>.
 
 <p align="center">
-<img src="figures/3-theory/robo_arm_w.png" alt="" width="43%">
+<img src="figure/3-theory/robo_arm_w.png" alt="" width="43%">
 <br>
-<sup><b>Fig. 3.9&nbsp;&nbsp;Transformation between adjacent revolute joint frames</b></sup>
+<sup><b>Fig. 3.8&nbsp;&nbsp;Transformation between adjacent revolute joint frames</b></sup>
 </p>
 
-As shown in figure 3.9, the position of the end-effector is known w.r.t. *its* coordinate reference frame *C*. The objective is to express it w.r.t. the *fixed* world coordinate reference frame *W*. This is because the positions of all objects of interest in the manipulator's environment are expressed w.r.t. the world reference frame. In other worlds, both, the end-effector, *and* the objects it interacts with need to be defined on the *same* coordinate reference frame. 
+As shown in figure 3.8, the position of the end-effector is known w.r.t. *its* coordinate reference frame *C*. The objective is to express it w.r.t. the *fixed* world coordinate reference frame *W*. This is because the positions of all objects of interest in the manipulator's environment are expressed w.r.t. the world reference frame. In other worlds, both, the end-effector, *and* the objects it interacts with need to be defined on the *same* coordinate reference frame. 
 
 Point P relative to frame *W* can be found by successively applying equation (4) between adjacent joints:
 
 <p align="center">
-<img src="figures/3-theory/robo_arm_sol_complete_2.png" alt="" width="84%">
+<img src="figure/3-theory/robo_arm_sol_complete_2.png" alt="" width="84%">
 </p>
 
 The above process can be summarized in terms of equation (1) with *<sup>W</sup><sub>C</sub>T* being the desired composite homogeneous transform that projects *frame C* onto *frame W*.
 
 <p align="center">
-<img src="figures/3-theory/robo_arm_sol_summary_3.png" alt="" width="21%">
+<img src="figure/3-theory/robo_arm_sol_summary_3.png" alt="" width="21%">
 </p>
 
 #### 3.6 Denavit–Hartenberg parameters
 Before the homogeneous transforms between adjacent links can be computed, the coordinate frames of the joint links on which the transforms are applied must be defined. The [Denavit–Hartenberg (DH) parameters](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) are four parameters describing the rotations and translations between adjacent links. The definition of these parameters constitutes a convention for assigning coordinate reference frames to the links of a robotic manipulator. Figure 3.8 shows the so-called *modified* convention of DH parameters as defined by \[Craig, JJ. (2005)].
 
 <p align="center">
-<img src="figures/3-theory/mod_dh_params_labeled_4.png" alt="" width="65%">
+<img src="figure/3-theory/mod_dh_params_labeled_4.png" alt="" width="65%">
 <br>
-<sup><b>Fig. 3.8&nbsp;&nbsp;The four parameters of the Modified DH convention</b></sup>
+<sup><b>Fig. 3.7&nbsp;&nbsp;The four parameters of the Modified DH convention</b></sup>
 <br>
 <sup>[Source: Modified from Wikipedia Commons]</sup>
 </p>
