@@ -27,9 +27,7 @@ two robots, cyton_300_gamma and turtlebot3, achive a common goal
 1. [Introduction](#1.0)
 2. [Environment Setup](#2.0)
 3. [Theoretical Background](#3.0)
-4. [Design Requirements](#4.0)
-5. [Design Implementation](#5.0)
-7. [Testing and Review](#6.0)
+4. [Testing and Review](#4.0)
 
 ------------
 
@@ -207,6 +205,7 @@ rosrun py_moveit python_sim.py
 <!--<div style="text-align:left;">
 <span style="font-size: 1.4em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">3. Theoretical Background</span><span style="float:right;"><a href="#top">Back to Top</a></span>
 </div>-->
+
 ### 3. Theoretical Background
 The following theoretical concepts are used in this project:
 * Generalized Coordinates and Degrees of Freedom
@@ -253,7 +252,9 @@ The serial manipulator shown in figure 3.1  has n=3 joints: each a [revolute](ht
 
 Therefore, the total number of DOF for any serial manipulator with *three* 1-DOF joints is:
 
-&nbsp;<img src="figure/3-theory/the total number of DOF.png" alt="" width="5%">
+<p align="center">
+<img src="figure/3-theory/the total number of DOF.png" alt="" width="100%">
+</p>
 
 *Note:* The DOF of a serial manipulator with only [revolute](https://en.wikipedia.org/wiki/Revolute_joint) and/or [prismatic](https://en.wikipedia.org/wiki/Prismatic_joint) joints is *always* equal to the number of its joints, except when both ends of the manipulator are fixed (closed chain linkage).
 
@@ -304,7 +305,7 @@ where the first term on the right-hand side is the **2D Rotation Matrix**, denot
 
 
 #### 3.3 Euler Angles
-Euler angles are a system to describe a sequence or a composition of rotations. According to [Euler's Rotation Theorem](https://en.wikipedia.org/wiki/Euler%27s_rotation_theorem), the orientation of any [rigid body](https://en.wikipedia.org/wiki/Rigid_body) w.r.t. some fixed reference frame can always be described by **three** elementary rotations in a given **sequence** as shown in figure 3.3.
+Euler angles are a system to describe a sequence or a composition of rotations. According to [Euler's Rotation Theorem](https://en.wikipedia.org/wiki/Euler%27s_rotation_theorem), the orientation of any [rigid body](https://en.wikipedia.org/wiki/Rigid_body) w.r.t. some fixed reference frame can always be described by **three** elementary rotations.
 
 <p align="center">
 <img src="figure/3-theory/Inertial-Frame.png" alt="" width="52%">
@@ -527,21 +528,21 @@ can rotate back and forth separately.
 Let’s define the dynamical model:
 
 * (x,y) - the position of the robot
-* φ - the orientation of the robot
+* θ - the orientation of the robot
 * v- measured linear velocity
 * ω - measured angular velocity
 let's write the derivatives of the position and the orientation,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=v\cos(\phi)" title="\Large \dot{x}=v\cos(\phi)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=v\cos(\theta)" title="\Large \dot{x}=v\cos(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=v\sin(\phi)" title="\Large \dot{y}=v\sin(\phi)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=v\sin(\theta)" title="\Large \dot{y}=v\sin(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\phi}=\omega " title="\Large \dot{\phi}=\omega " />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\theta}=\omega " title="\Large \dot{\theta}=\omega " />
 </p>
 
 <p align="center">
@@ -559,28 +560,29 @@ Let’s define it in our model:
 * L - the distance between the wheels
 * vr - right wheel velocity
 * vl - left wheel velocity
+
 so,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=\frac{R}{2}(v_r+v_l)\cos(\phi)" title="\Large \dot{x}=\frac{R}{2}(v_r+v_l)\cos(\phi)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=\frac{R}{2}(v_r+v_l)\cos(\theta)" title="\Large \dot{x}=\frac{R}{2}(v_r+v_l)\cos(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=\frac{R}{2}(v_r+v_l)\sin(\phi)" title="\Large \dot{y}=\frac{R}{2}(v_r+v_l)\sin(\phi)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=\frac{R}{2}(v_r+v_l)\sin(\theta)" title="\Large \dot{y}=\frac{R}{2}(v_r+v_l)\sin(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\phi}=\frac{R}{L}(v_r-v_l) " title="\Large \dot{\phi}=\frac{R}{L}(v_r-v_l) " />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\theta}=\frac{R}{L}(v_r-v_l) " title="\Large \dot{\theta}=\frac{R}{L}(v_r-v_l) " />
 </p>
 
 If we compare coefficients 
- we can express the measured linear <img src="https://latex.codecogs.com/svg.latex?\small&space;(\dot{x},\dot{y},\dot{\phi}) " title="\small (\dot{x},\dot{y},\dot{\phi}) " />
+ we can express the measured linear <img src="https://latex.codecogs.com/svg.latex?\small&space;(\dot{x},\dot{y},\dot{\theta}) " title="\small (\dot{x},\dot{y},\dot{\theta}) " />
 and angular velocities depending on <img src="https://latex.codecogs.com/svg.latex?\small&space;(v_r,v_l) " title="\small (v_r,v_l) " />:
 
 so,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{R}{2}(v_r+v_l)\cos(\phi)" title="\Large  v=\frac{R}{2}(v_r+v_l)\cos(\phi)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{R}{2}(v_r+v_l)\cos(\theta)" title="\Large  v=\frac{R}{2}(v_r+v_l)\cos(\theta)" />
 </p>
 
 <p align="center">
@@ -599,6 +601,8 @@ hence,
 </p>
 
 #### 3.9 Robot Operating System (ROS)
+
+The Robot Operating System (ROS) is a set of software libraries and tools used to build robotic systems. ROS is known for a distributed and modular design. Given a model of the environment, task planning is concerned with the assembly of actions into a structure that is predicted to achieve goals.
 
 ##### ROS_MASTER:
 * manager of the ROS *Nodes*
@@ -650,7 +654,31 @@ hence,
 - Automatically re-spawn processes that have died
 
 ##### Rosplan
+- The ROSPlan framework provides a collection of tools for AI Planning in a ROS system. ROSPlan has a variety of nodes which encapsulate planning, problem generation, and plan execution. It possesses a simple interface, and links to common ROS libraries.
+- ROSPlan has a modular design, intended to be modified. It serves as a framework to test new modules with minimal effort. Alternate approaches to state estimation, plan representation, dispatch and execution can be tested without having to write an entire framework.
 
+------------
+<a name="4.0"></a>
+<!--<div style="text-align:left;">
+<span style="font-size: 1.4em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">3. Testing and Review</span><span style="float:right;"><a href="#top">Back to Top</a></span>
+</div>-->
 
+### Testing and Review
 
+------------
 
+### References
+
+Udacity RoboND Pick & Place. (2017). Salman Hashmi. https://github.com/Salman-H/pick-place-robot
+
+Narong Aphiratsakun. (2015). MT411 Robotic Engineering, Asian Institute of Technology (AIT). http://slideplayer.com/slide/10377412/
+
+Siciliano et al. (2010). Robotics: Modelling, Planning and Control, (Springer)
+
+Elashry, Khaled & Glynn, Ruairi. (2014). An Approach to Automated Construction Using Adaptive Programing. 51-66. 10.1007/978-3-319-04663-1_4, (Springer)
+
+Yi Cao, Ke Lu, Xiujuan Li and Yi Zang (2011). Accurate Numerical Methods for Computing 2D and 3D Robot Workspace [Journal] // International Journal of Advanced Robotic Systems : INTECH, August 2011. – 6 : Vol. VIII – pp. 1-13.
+
+Understanding Euler Angles. CHRobotics. http://www.chrobotics.com/library/understanding-euler-angles
+
+Craig, JJ. (2005). Introduction to Robotics: Mechanics and Control, 3rd Ed (Pearson Education)
