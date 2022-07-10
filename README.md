@@ -66,8 +66,6 @@ which get assistnce from [Turtlebot3 - Burger](https://emanual.robotis.com/docs/
 <sup><b>Fig. 1.2&nbsp;&nbsp;A Turtlebot3 - Burger </b></sup>
 </p>
 
-
-
 ##### Objective
 In order to collaborate effectively, AI agents must be able to reason about the behaviors of other agents, learn to communicate effectively, learn to ask for help from other agents and understand how they can offer valuable assistance to other agents. . 
 
@@ -94,9 +92,9 @@ Within the context of this project, a single *task* cycle can be divided into th
 Collaborative ability can be beneficial in several ways: Performing complex tasks that can't be done by one agent alone. Additionally, information sharing should occur and maximize the utilization of each agent's abilities, whether together or individually. Furthermore, when dealing with an environment involving people, we can define roles for the robot and the person.
 
 <p align="center">
-<img src="figures/1-intro/relevance.png" alt="" width="73%">
+<img src="figure/intro-1/relevant pic.jpg" alt="" width="73%">
 <br>
-<sup><b>Fig. 1.3&nbsp;&nbsp;relevant pic</b></sup>
+<sup><b>Fig. 1.3&nbsp;&nbsp;industrial robots can operate in a collaborative environment</b></sup>
 </p>
 
 Robotic manipulators and Differential Drive Robot like Tb3 have become ubiquitous in almost every industry; from food, beverage, shipping and packaging to manufacturing, foundry and space:
@@ -125,82 +123,82 @@ Once ROS is installed, we can proceed with the environment setup for the project
 
 ##### Verify Project Tools
 
-1\. Chack that you have tje following dependencies and if not run the following commands:
+1\. Chack that you have the following dependencies and if not run the following commands:
 ```sh
-$ sudo apt-get install ros-melodic-ros-controllers
+ sudo apt-get install ros-melodic-ros-controllers
 ```
 ```sh
-$ sudo apt-get install ros-melodic-gazebo*
+sudo apt-get install ros-melodic-gazebo*
 ```
 ```sh
-$ sudo apt-get install ros-melodic-moveit*
+sudo apt-get install ros-melodic-moveit*
 ```
 ```sh
-$ sudo apt-get install ros-melodic-industrial-core
+sudo apt-get install ros-melodic-industrial-core
 ```
 ```sh
-$ sudo apt-get install ros-melodic-trac-ik-kinematics-plugin
+sudo apt-get install ros-melodic-trac-ik-kinematics-plugin
 ```
 ```sh
-$ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \
-  ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc \
-  ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan \
-  ros-melodic-rosserial-arduino ros-melodic-rosserial-python \
-  ros-melodic-rosserial-server ros-melodic-rosserial-client \
-  ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server \
-  ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro \
-  ros-melodic-compressed-image-transport ros-melodic-rqt* \
-  ros-melodic-gmapping ros-melodic-navigation ros-melodic-interactive-markers
+sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \
+ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc \
+ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan \
+ros-melodic-rosserial-arduino ros-melodic-rosserial-python \
+ros-melodic-rosserial-server ros-melodic-rosserial-client \
+ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server \
+ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro \
+ros-melodic-compressed-image-transport ros-melodic-rqt* \
+ros-melodic-gmapping ros-melodic-navigation ros-melodic-interactive-markers
 
 ```
 ##### Create ROS Workspace
 2\. Create a [catkin](http://wiki.ros.org/catkin/conceptual_overview) workspace if haven't already
 ```sh
-$ mkdir -p ~/catkin_ws/src
-$ cd ~/catkin_ws/
-$ catkin_init_workspace
-$ ls -l
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_init_workspace
+ls -l
 ```
 
 3\. Clone or download project repository into the *src* directory of the catkin workspace
 ```sh
 cd ~/catkin_ws/src
-$ git clone https://github.com/andreasBihlmaier/gazebo2rviz.git
-$ git clone https://github.com/andreasBihlmaier/pysdf.git
-$ git clone https://github.com/JenniferBuehler/general-message-pkgs.git
-$ git clone https://github.com/JenniferBuehler/gazebo-pkgs.git
-$ git clone https://github.com/pal-robotics/gazebo_ros_link_attacher.git
-$ git clone https://github.com/ItayGrinberg93/multi_agent.git
+git clone https://github.com/andreasBihlmaier/gazebo2rviz.git
+git clone https://github.com/andreasBihlmaier/pysdf.git
+git clone https://github.com/JenniferBuehler/general-message-pkgs.git
+git clone https://github.com/JenniferBuehler/gazebo-pkgs.git
+git clone https://github.com/pal-robotics/gazebo_ros_link_attacher.git
+git clone https://github.com/ItayGrinberg93/multi_agent.git
 ```
 4\. Build the project
 ```sh
-$ cd ~/catkin_ws
-$ catkin_make
+cd ~/catkin_ws
+catkin_make
 ```
 #### Run the simulation
 5\. To use TB3 add to bash.rc or open two terminals and run in each: 
 ```sh
-$ source devel/setup.bash
-$ export TURTLEBOT3_MODEL=burger 
+source devel/setup.bash
+export TURTLEBOT3_MODEL=burger 
 ```
 6\. At the first terminal run:
 ```sh
-$ roslaunch new_moveit_config multi_gazebo_update.launch 
+roslaunch new_moveit_config multi_gazebo_update.launch 
 ```
 7\. At the secound terminal run:
 ```sh
-$ roslaunch new_moveit_config bringup_update.launch
+roslaunch new_moveit_config bringup_update.launch
  
 ```
 #### python code
 8\. Open a new terminal and run:
 
 ```sh
-$ cd ~/catkin_ws
-$ source devel/setup.bash
-$ cd src/py_moveit/scripts
-$ chmod +x python_sim.py
-$ rosrun py_moveit python_sim.py
+cd ~/catkin_ws
+source devel/setup.bash
+cd src/py_moveit/scripts
+chmod +x python_sim.py
+rosrun py_moveit python_sim.py
 ```
 
 ------------
@@ -211,9 +209,6 @@ $ rosrun py_moveit python_sim.py
 </div>-->
 ### 3. Theoretical Background
 The following theoretical concepts are used in this project:
-
-
-
 * Generalized Coordinates and Degrees of Freedom
 * Common industrial serial manipulators and their workspace
 * Rotation matrices and composition of rotations
@@ -229,8 +224,7 @@ The following theoretical concepts are used in this project:
 
 #### For the TB3
 
-* Generalized Coordinates and Degrees of Freedom
-
+* Generalized Coordinates and Dynamic model
 
 #### 3.1 Serial Manipulators
 [Serial manipulators](https://en.wikipedia.org/wiki/Serial_manipulator) are robots composed of an assembly of links connected by joints (a [Kinematic Chain](https://en.wikipedia.org/wiki/Kinematic_chain)), and the most common types of robots in industry.
@@ -259,7 +253,7 @@ The serial manipulator shown in figure 3.1  has n=3 joints: each a [revolute](ht
 
 Therefore, the total number of DOF for any serial manipulator with *three* 1-DOF joints is:
 
-&nbsp;<img src="figures/3-theory/codecogseqn3.gif" alt="" width="5%">
+&nbsp;<img src="figure/3-theory/the total number of DOF.png" alt="" width="5%">
 
 *Note:* The DOF of a serial manipulator with only [revolute](https://en.wikipedia.org/wiki/Revolute_joint) and/or [prismatic](https://en.wikipedia.org/wiki/Prismatic_joint) joints is *always* equal to the number of its joints, except when both ends of the manipulator are fixed (closed chain linkage).
 
@@ -357,19 +351,30 @@ Euler angles, normally in the [Tait–Bryan](https://commons.wikimedia.org/wiki/
 Of particular importance is a phenomenon associated with Euler angles known as a [Gimbal Lock](https://en.wikipedia.org/wiki/Gimbal_lock) which occurs when there is a loss of one degree of freedom as a result of the axes of two of the three [gimbals](https://en.wikipedia.org/wiki/Gimbal) driven into a parrallel configuration.
 
 #### 3.4 Quaternions 
-Quaternions are an algebraic structure that extends the familiar concept of complex numbers.A quaternion is a 4-tuple written formally as q0 + q1*i + q2*j + q3*k , where qi are real numbers and the symbols i, j, k sustain an orthogonal system. While quaternions are much less intuitive than angles, rotations defined by quaternions can be computed more efficiently
-and with more stability, and therefore are widely used.
+Quaternions are an algebraic structure that extends the familiar concept of complex numbers.A quaternion is a 4-tuple written formally as q0 + q1*i + q2*j + q3k , where qi are real numbers and the symbols i, j, k sustain an orthogonal system.
 
-**From Euler angles to a quaternion** The formula seems to have been derived this way:
+[**From euler angles to a quaternion**](https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles) The formula seems to have been derived this way:
 
 First, roll around the world x
-axis. The quaternion for this is qx,α=cosα2/+(sinα/2)i.
+axis. The quaternion for this is:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\small&space;q_{x,\alpha}=cos(\frac{\alpha}{2})+(sin(\frac{\alpha}{2}))i" title="\small q_{x,\alpha}=cos(\frac{\alpha}{2})+(sin(\frac{\alpha}{2}))i" />
+</p>
 
 Second, pitch around the world y
-axis. The quaternion is qy,β=cosβ/2+(sinβ/2)j.
+axis. The quaternion is:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\small&space;q_{y,\beta}=cos(\frac{\beta}{2})+(sin(\frac{\beta}{2}))j" title="\small q_{y,\beta}=cos(\frac{\beta}{2})+(sin(\frac{\beta}{2}))j" />
+</p>
 
 Third, yaw around the world z
-axis. The quaternion is  qz,γ=cosγ/2+(sinγ/2)k..
+axis. The quaternion is:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\small&space;q_{z,\gamma}=cos(\frac{\gamma}{2})+(sin(\frac{\gamma}{2}))k" title="\small q_{z,\gamma}=cos(\frac{\gamma}{2})+(sin(\frac{\gamma}{2}))k" />
+</p>
 
 A rotation that is done in steps like this is modeled by multiplying the quaternions.
 
@@ -380,6 +385,8 @@ A rotation that is done in steps like this is modeled by multiplying the quatern
 <br>
 <sup>[Source: Wikipedia]</sup>
 </p>
+
+While quaternions are much less intuitive than angles, rotations defined by quaternions can be computed more efficiently and with more stability, and therefore are widely used.
 
 #### 3.5 Homogeneous Transforms
 In the case where a reference frame is both simultaneously rotated *and* translated (transformed) with respect to some other reference frame, a *homogeneous transform matrix* describes the transformation.
@@ -429,7 +436,7 @@ The above process can be summarized in terms of equation (1) with *<sup>W</sup><
 </p>
 
 #### 3.6 Denavit–Hartenberg parameters
-Before the homogeneous transforms between adjacent links can be computed, the coordinate frames of the joint links on which the transforms are applied must be defined. The [Denavit–Hartenberg (DH) parameters](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) are four parameters describing the rotations and translations between adjacent links. The definition of these parameters constitutes a convention for assigning coordinate reference frames to the links of a robotic manipulator. Figure 3.8 shows the so-called *modified* convention of DH parameters as defined by \[Craig, JJ. (2005)].
+Before the homogeneous transforms between adjacent links can be computed, the coordinate frames of the joint links on which the transforms are applied must be defined. The [Denavit–Hartenberg (DH) parameters](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) are four parameters describing the rotations and translations between adjacent links. The definition of these parameters constitutes a convention for assigning coordinate reference frames to the links of a robotic manipulator. Figure 3.7 shows the so-called *modified* convention of DH parameters as defined by \[Craig, JJ. (2005)].
 
 <p align="center">
 <img src="figure/3-theory/mod_dh_params_labeled_4.png" alt="" width="65%">
@@ -454,17 +461,17 @@ Note:
 Recall that to compute the position of the end-effector w.r.t. the base or world reference frame, transforms between adjacent links are composed as follows:
 
 <p align="center">
-<img src="figures/3-theory/dh_eq_1.png" alt="" width="55%">
+<img src="figure/3-theory/dh_eq_1.png" alt="" width="55%">
 </p>
 
 where the base frame is denoted by *0* and the end-effector's frame denoted by *N*. Thus,  <sup>0</sup><sub>N</sub>T defines the homogeneous transformation that projects frame *N* onto frame *0*. More specifically, a single transform between links *i-1* and *i* is given by
 
 <p align="center">
-<img src="figures/3-theory/dh_eq_2.png" alt="" width="55%">
+<img src="figure/3-theory/dh_eq_2.png" alt="" width="55%">
 </p>
 
 <p align="center">
-<img src="figures/3-theory/dh_eq_3_v2.png" alt="" width="55%">
+<img src="figure/3-theory/dh_eq_3_v2.png" alt="" width="55%">
 </p>
 
 and is made up up of two rotations *R* of magnitudes α and θ, and two displacements *D* of magnitudes ɑ and d.
@@ -495,7 +502,7 @@ Special cases involving the *Z*<sub>i-1</sub> and *Z*<sub>i</sub> axes:
 Once the frame assignments are made, the DH parameters are typically presented in tabular form (below). Each row in the table corresponds to the homogeneous transform from frame {i} to frame {i+1}.
 
 <p align="center">
-<img src="figures/3-theory/mod_dh_table_2.png" alt="" width="58%">
+<img src="figure/3-theory/mod_dh_table_2.png" alt="" width="58%">
 <br>
 <sup><b>Table 3.1&nbsp;&nbsp;The four parameters of the Modified DH convention</b></sup>
 </p>
@@ -506,9 +513,9 @@ Forward Kinematics is the process of computing a manipulator's end-effector posi
 The relationship between Forward and Inverse Kinematics is depicted in figure 3.9,
 
 <p align="center">
-<img src="figures/3-theory/fk_ik_3.png" alt="" width="43%">
+<img src="figure/3-theory/fk_ik_3.png" alt="" width="43%">
 <br>
-<sup><b>Fig. 3.9&nbsp;&nbsp;Relationship between Forward and Inverse Kinematics</b></sup>
+<sup><b>Fig. 3.8&nbsp;&nbsp;Relationship between Forward and Inverse Kinematics</b></sup>
 </p>
 
 Inverse Kinematics is the reverse process where the EE position is known and a set of joint angles that would result in that position need to be determined. This is a more complicated process than FK as multiple solutions can exist for the same EE position. However, no joint angle solutions exist for any EE position outside the manipulator's workspace. There are two main approaches to solve the IK problem: numerical and analytical. The later approach is used in this project.
@@ -535,6 +542,14 @@ let's write the derivatives of the position and the orientation,
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\phi}=\omega " title="\Large \dot{\phi}=\omega " />
+</p>
+
+<p align="center">
+<img src="figure/3-theory/Turtlebot3-1.jpg" alt="" width="43%">
+<br>
+<sup><b>Fig. 3.9&nbsp;&nbsp;(a) 3-D view of the Turtlebot3 Burger robot, and (b) definitions of the state variables ρ, α, and θ in an overhead view of the robot.</sup>
+<sup>[Source:Amir Salimi Lafmejani. Researchgate]</sup>
+</br>
 </p>
 
 In the robot we control at, their only the velocity of the two wheels
@@ -576,11 +591,11 @@ hence,
 
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space; $$v_r=\frac{2v+\omega L}{2R}$$" title="\Large $$v_r=\frac{2v+\omega L}{2R}$$" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_l=\frac{2v+\omega L}{2R}" title="\Large v_r=\frac{2v+\omega L}{2R}" />
 </p>
 
 <p align="center">
-<img src="https://render.githubusercontent.com/render/math?math=v_l=\frac{2v-\omega L}{2R}">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_r=\frac{2v-\omega L}{2R}" title="\Large v_l=\frac{2v-\omega L}{2R}" />
 </p>
 
 #### 3.9 Robot Operating System (ROS)
