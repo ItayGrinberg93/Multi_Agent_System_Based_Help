@@ -1,5 +1,5 @@
 <launch>
-  <arg name="map_file" default="$(find MRS_236609)/maps/square_world.yaml"/>
+  <arg name="map_file" default="$(find new_moveit_config)/maps/square_world.yaml"/>
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />
   <!-- Allow user to specify database location -->
