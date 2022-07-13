@@ -182,15 +182,19 @@ export TURTLEBOT3_MODEL=burger
 ```
 6\. At the first terminal run:
 ```sh
-roslaunch new_moveit_config multi_gazebo_update.launch 
+roscore 
 ```
 7\. At the secound terminal run:
+```sh
+roslaunch new_moveit_config multi_gazebo_update.launch 
+```
+8\. At the third terminal run:
 ```sh
 roslaunch new_moveit_config bringup_update.launch
  
 ```
 #### python code
-8\. Open a new terminal and run:
+9\. Open a new terminal and run:
 
 ```sh
 cd ~/catkin_ws
