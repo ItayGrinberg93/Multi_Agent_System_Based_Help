@@ -561,7 +561,26 @@ let's write the derivatives of the position and the orientation,
 In the robot we control at, their only the velocity of the two wheels
 Let’s define it in our model:
 
-* R - the radios of the wheel
+<p align="center">
+<img src="figure/3-theory/DDR_1.pag" alt="" width="43%">
+<br>
+<sup><b>Fig. 3.9&nbsp;&nbsp;Geometric description of the robot movement</sup>
+</br>
+</p>
+
+As we can see d is the distance between the two TB3 centers. Form geometric calculations we get:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;d=\frac{d_l+d_r}{2}" title="\Large d=\frac{d_l+d_r}{2}" />
+</p>
+and,
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta=\frac{(d_r-d_r)*2}{L}" title="\Large \theta=\frac{(d_r-d_r)*2}{L}" />
+</p>
+
+We can derivate the following expressions and use the relationship between v and ω:
+
+* r - the radios of the wheel
 * L - the distance between the wheels
 * vr - right wheel velocity
 * vl - left wheel velocity
@@ -569,15 +588,15 @@ Let’s define it in our model:
 so,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=\frac{R}{2}(v_r+v_l)\cos(\theta)" title="\Large \dot{x}=\frac{R}{2}(v_r+v_l)\cos(\theta)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=\frac{r}{2}(v_r+v_l)\cos(\theta)" title="\Large \dot{x}=\frac{r}{2}(v_r+v_l)\cos(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=\frac{R}{2}(v_r+v_l)\sin(\theta)" title="\Large \dot{y}=\frac{R}{2}(v_r+v_l)\sin(\theta)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=\frac{r}{2}(v_r+v_l)\sin(\theta)" title="\Large \dot{y}=\frac{r}{2}(v_r+v_l)\sin(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\theta}=\frac{R}{L}(v_r-v_l) " title="\Large \dot{\theta}=\frac{R}{L}(v_r-v_l) " />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\theta}=\frac{r}{L}(v_r-v_l) " title="\Large \dot{\theta}=\frac{r}{L}(v_r-v_l) " />
 </p>
 
 If we compare coefficients 
@@ -587,22 +606,22 @@ and angular velocities depending on <img src="https://latex.codecogs.com/svg.lat
 so,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{R}{2}(v_r+v_l)\cos(\theta)" title="\Large  v=\frac{R}{2}(v_r+v_l)\cos(\theta)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{r}{2}(v_r+v_l)\cos(\theta)" title="\Large  v=\frac{r}{2}(v_r+v_l)\cos(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\omega=\frac{R}{L}(v_r-v_l) " title="\Large \omega=\frac{R}{L}(v_r-v_l)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\omega=\frac{r}{L}(v_r-v_l) " title="\Large \omega=\frac{r}{L}(v_r-v_l)" />
 </p>
 
 hence,
 
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_l=\frac{2v+\omega L}{2R}" title="\Large v_r=\frac{2v+\omega L}{2R}" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_l=\frac{2*v+\omega L}{2*r}" title="\Large v_r=\frac{2*v+\omega L}{2*r}" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_r=\frac{2v-\omega L}{2R}" title="\Large v_l=\frac{2v-\omega L}{2R}" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_r=\frac{2*v-\omega L}{2*r}" title="\Large v_l=\frac{2*v-\omega L}{2*r}" />
 </p>
 
 #### 3.9 Robot Operating System (ROS)
