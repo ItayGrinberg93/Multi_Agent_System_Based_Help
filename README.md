@@ -562,7 +562,7 @@ In the robot we control at, their only the velocity of the two wheels
 Let’s define it in our model:
 
 <p align="center">
-<img src="figure/3-theory/DDR_1.pag" alt="" width="43%">
+<img src="/figure/3-theory/DDR_1.png" alt="" width="43%">
 <br>
 <sup><b>Fig. 3.9&nbsp;&nbsp;Geometric description of the robot movement</sup>
 </br>
@@ -575,7 +575,7 @@ As we can see d is the distance between the two TB3 centers. Form geometric calc
 </p>
 and,
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta=\frac{(d_r-d_r)*2}{L}" title="\Large \theta=\frac{(d_r-d_r)*2}{L}" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta=\frac{(d_r-d_r)\cdot 2}{L}" title="\Large \theta=\frac{(d_r-d_r)\cdot 2}{L}" />
 </p>
 
 We can derivate the following expressions and use the relationship between v and ω:
@@ -615,14 +615,10 @@ so,
 
 hence,
 
-
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_l=\frac{2*v+\omega L}{2*r}" title="\Large v_r=\frac{2*v+\omega L}{2*r}" />
+<img src="/figure/3-theory/DDR_2.png" alt="" width="43%">
 </p>
 
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space; v_r=\frac{2*v-\omega L}{2*r}" title="\Large v_l=\frac{2*v-\omega L}{2*r}" />
-</p>
 
 #### 3.9 Robot Operating System (ROS)
 
