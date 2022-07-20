@@ -573,9 +573,11 @@ As we can see d is the distance between the two TB3 centers. Form geometric calc
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;d=\frac{d_l+d_r}{2}" title="\Large d=\frac{d_l+d_r}{2}" />
 </p>
+
 and,
+
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta=\frac{(d_r-d_r)\cdot 2}{L}" title="\Large \theta=\frac{(d_r-d_r)\cdot 2}{L}" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\Delta\theta=\frac{(d_r-d_r)\cdot2}{L}" title="\Large \Delta\theta=\frac{(d_r-d_r)\cdot2}{L}" />
 </p>
 
 We can derivate the following expressions and use the relationship between v and ω:
