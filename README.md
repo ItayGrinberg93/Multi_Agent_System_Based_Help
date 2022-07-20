@@ -616,7 +616,7 @@ so,
 hence,
 
 <p align="center">
-<img src="/figure/3-theory/DDR_2.png" alt="" width="43%">
+<img src="/figure/3-theory/DDR_2.png" alt="" width="20%">
 </p>
 
 
