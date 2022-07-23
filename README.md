@@ -608,7 +608,7 @@ and angular velocities depending on <img src="https://latex.codecogs.com/svg.lat
 so,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{r}{2}(v_r+v_l)\cos(\theta)" title="\Large  v=\frac{r}{2}(v_r+v_l)\cos(\theta)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{r}{2}(v_r+v_l)" title="\Large  v=\frac{r}{2}(v_r+v_l)" />
 </p>
 
 <p align="center">
