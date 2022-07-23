@@ -590,29 +590,29 @@ We can derivate the following expressions and use the relationship between v and
 so,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=\frac{r}{2}(v_r+v_l)\cos(\theta)" title="\Large \dot{x}=\frac{r}{2}(v_r+v_l)\cos(\theta)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{x}=\frac{r}{2}(\omega_r+\omega_l)\cos(\theta)" title="\Large \dot{x}=\frac{r}{2}(\omega_r+\omega_l)\cos(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=\frac{r}{2}(v_r+v_l)\sin(\theta)" title="\Large \dot{y}=\frac{r}{2}(v_r+v_l)\sin(\theta)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{y}=\frac{r}{2}(\omega_r+\omega_l)\sin(\theta)" title="\Large \dot{y}=\frac{r}{2}(\omega_r+\omega_l)\sin(\theta)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\theta}=\frac{r}{L}(v_r-v_l) " title="\Large \dot{\theta}=\frac{r}{L}(v_r-v_l) " />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\dot{\theta}=\frac{r}{L}(\omega_r-\omega_l) " title="\Large \dot{\theta}=\frac{r}{L}(\omega_r-\omega_l) " />
 </p>
 
 If we compare coefficients 
  we can express the measured linear <img src="https://latex.codecogs.com/svg.latex?\small&space;(\dot{x},\dot{y},\dot{\theta}) " title="\small (\dot{x},\dot{y},\dot{\theta}) " />
-and angular velocities depending on <img src="https://latex.codecogs.com/svg.latex?\small&space;(v_r,v_l) " title="\small (v_r,v_l) " />:
+and angular velocities depending on <img src="https://latex.codecogs.com/svg.latex?\small&space;(\omega_r,\omega_l) " title="\small (\omega_r,\omega_l) " />:
 
 so,
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{r}{2}(v_r+v_l)" title="\Large  v=\frac{r}{2}(v_r+v_l)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;v=\frac{r}{2}(\omega_r+\omega_l)" title="\Large  v=\frac{r}{2}(\omega_r+\omega_l)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\omega=\frac{r}{L}(v_r-v_l) " title="\Large \omega=\frac{r}{L}(v_r-v_l)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\omega=\frac{r}{L}(\omega_r-\omega_l) " title="\Large \omega=\frac{r}{L}(\omega_r-\omega_l)" />
 </p>
 
 hence,
